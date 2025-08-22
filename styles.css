@@ -4,15 +4,27 @@
     box-sizing: border-box;
 }
 
+:root {
+    --purpura-primario: #6366f1;
+    --rosa-secundario: #ec4899;
+    --cyan-acento: #06b6d4;
+    --fondo-oscuro: #0f0f23;
+    --tarjeta-oscura: #1a1a2e;
+    --texto-claro: #e2e8f0;
+    --texto-apagado: #94a3b8;
+    --fondo-cristal: rgba(255, 255, 255, 0.05);
+    --borde-cristal: rgba(255, 255, 255, 0.1);
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #0f0f23;
-    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--fondo-oscuro);
+    color: var(--texto-claro);
     line-height: 1.6;
 }
 
 header {
-    background: #1a1a2e;
+    background: var(--tarjeta-oscura);
     padding: 1rem;
 }
 
@@ -26,18 +38,28 @@ nav {
 
 .logotipo {
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--purpura-primario), var(--rosa-secundario));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .menu-navegacion {
     display: flex;
     list-style: none;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .enlace-navegacion {
-    color: #e2e8f0;
+    color: var(--texto-apagado);
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.enlace-navegacion:hover {
+    color: var(--texto-claro);
 }
 
 main {
@@ -52,21 +74,141 @@ main {
 
 .seccion-principal {
     text-align: center;
-    padding: 2rem 0;
+    padding: 4rem 0;
 }
 
 .titulo-principal {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--texto-claro), var(--purpura-primario), var(--rosa-secundario));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .subtitulo-principal {
-    font-size: 1.2rem;
-    color: #94a3b8;
+    font-size: 1.3rem;
+    color: var(--texto-apagado);
+    margin-bottom: 2rem;
+}
+
+.llamada-accion-principal {
+    display: flex;
+    justify-content: center;
+}
+
+.boton {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.boton-primario {
+    background: linear-gradient(135deg, var(--purpura-primario), var(--rosa-secundario));
+    color: white;
+}
+
+.boton-primario:hover {
+    transform: translateY(-3px);
+}
+
+.servicios {
+    padding: 4rem 0;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--texto-claro), var(--cyan-acento));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cuadricula-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tarjeta-servicio {
+    background: var(--fondo-cristal);
+    border: 1px solid var(--borde-cristal);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-10px);
+}
+
+.icono-servicio {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--purpura-primario), var(--rosa-secundario));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.titulo-servicio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--texto-claro);
+}
+
+.descripcion-servicio {
+    color: var(--texto-apagado);
 }
 
 footer {
-    background: #1a1a2e;
+    background: var(--tarjeta-oscura);
     padding: 1rem;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .menu-navegacion {
+        gap: 1rem;
+    }
+
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+
+    .boton {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    nav {
+        padding: 1rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cuadricula-servicios {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-seccion {
+        font-size: 2rem;
+    }
 }
