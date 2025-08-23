@@ -95,6 +95,7 @@ main {
 
 .llamada-accion-principal {
     display: flex;
+    gap: 1.5rem;
     justify-content: center;
 }
 
@@ -114,6 +115,17 @@ main {
 }
 
 .boton-primario:hover {
+    transform: translateY(-3px);
+}
+
+.boton-secundario {
+    background: var(--fondo-cristal);
+    color: var(--texto-claro);
+    border: 1px solid var(--borde-cristal);
+}
+
+.boton-secundario:hover {
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
 }
 
@@ -174,6 +186,74 @@ main {
     color: var(--texto-apagado);
 }
 
+.freelancers {
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cuadricula-freelancers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tarjeta-freelancer {
+    background: var(--tarjeta-oscura);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid var(--borde-cristal);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-freelancer:hover {
+    transform: scale(1.05);
+}
+
+.avatar-freelancer {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--cyan-acento), var(--rosa-secundario));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.nombre-freelancer {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.habilidad-freelancer {
+    color: var(--texto-apagado);
+    margin-bottom: 1rem;
+}
+
+.calificacion-freelancer {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.estrella {
+    color: #fbbf24;
+    font-size: 1.2rem;
+}
+
+.precio-freelancer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cyan-acento);
+}
+
 footer {
     background: var(--tarjeta-oscura);
     padding: 1rem;
@@ -187,6 +267,11 @@ footer {
 
     .titulo-principal {
         font-size: 2.5rem;
+    }
+
+    .llamada-accion-principal {
+        flex-direction: column;
+        align-items: center;
     }
 
     .boton {
@@ -204,7 +289,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .cuadricula-servicios {
+    .cuadricula-servicios,
+    .cuadricula-freelancers {
         grid-template-columns: 1fr;
     }
 
