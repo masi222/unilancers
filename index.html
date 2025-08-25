@@ -14,6 +14,7 @@
                 <li><a href="#inicio" class="enlace-navegacion">Inicio</a></li>
                 <li><a href="#servicios" class="enlace-navegacion">Servicios</a></li>
                 <li><a href="#freelancers" class="enlace-navegacion">Freelancers</a></li>
+                <li><a href="#calculadora" class="enlace-navegacion">Calculadora</a></li>
                 <li><a href="#nosotros" class="enlace-navegacion">Nosotros</a></li>
             </ul>
         </nav>
@@ -41,42 +42,48 @@
                         <div class="icono-servicio">💻</div>
                         <h3 class="titulo-servicio">Desarrollo Web</h3>
                         <p class="descripcion-servicio">
-                            Sitios web responsive y aplicaciones web modernas.
+                            Sitios web responsive, aplicaciones web modernas y soluciones frontend/backend 
+                            desarrolladas por estudiantes de ingeniería.
                         </p>
                     </div>
                     <div class="tarjeta-servicio">
                         <div class="icono-servicio">🎨</div>
                         <h3 class="titulo-servicio">Diseño Gráfico</h3>
                         <p class="descripcion-servicio">
-                            Logos, identidad visual y material publicitario.
+                            Logos, identidad visual, diseño de interfaces y material publicitario 
+                            creado por estudiantes de diseño y artes visuales.
                         </p>
                     </div>
                     <div class="tarjeta-servicio">
                         <div class="icono-servicio">📚</div>
                         <h3 class="titulo-servicio">Tutorías Académicas</h3>
                         <p class="descripcion-servicio">
-                            Clases particulares en matemáticas, programación y más.
+                            Clases particulares en matemáticas, programación, idiomas y materias específicas 
+                            impartidas por estudiantes destacados.
                         </p>
                     </div>
                     <div class="tarjeta-servicio">
                         <div class="icono-servicio">📱</div>
                         <h3 class="titulo-servicio">Apps Móviles</h3>
                         <p class="descripcion-servicio">
-                            Desarrollo de aplicaciones móviles para Android e iOS.
+                            Desarrollo de aplicaciones móviles para Android e iOS, 
+                            desde prototipos hasta apps completamente funcionales.
                         </p>
                     </div>
                     <div class="tarjeta-servicio">
                         <div class="icono-servicio">✍️</div>
                         <h3 class="titulo-servicio">Redacción y Contenido</h3>
                         <p class="descripcion-servicio">
-                            Artículos, copywriting y corrección de textos.
+                            Artículos, copywriting, corrección de textos y creación de contenido 
+                            por estudiantes de comunicación y literatura.
                         </p>
                     </div>
                     <div class="tarjeta-servicio">
                         <div class="icono-servicio">📊</div>
                         <h3 class="titulo-servicio">Análisis de Datos</h3>
                         <p class="descripcion-servicio">
-                            Visualización de datos y análisis estadístico.
+                            Visualización de datos, análisis estadístico y reportes 
+                            realizados por estudiantes de estadística y ciencias de datos.
                         </p>
                     </div>
                 </div>
@@ -139,6 +146,34 @@
                         </div>
                         <p class="precio-freelancer">$18/hora</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculadora" class="calculadora">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Calculadora de Tarifas</h2>
+                <div class="contenedor-calculadora">
+                    <h3>Estima el costo de tu proyecto</h3>
+                    <input type="number" id="horas" class="entrada-calculadora" placeholder="Horas estimadas del proyecto" min="1">
+                    <select id="categoria" class="entrada-calculadora">
+                        <option value="">Selecciona una categoría</option>
+                        <option value="10">Tutorías ($10/hora)</option>
+                        <option value="12">Diseño Gráfico ($12/hora)</option>
+                        <option value="15">Desarrollo Web ($15/hora)</option>
+                        <option value="18">Desarrollo Mobile ($18/hora)</option>
+                        <option value="14">Redacción ($14/hora)</option>
+                        <option value="16">Análisis de Datos ($16/hora)</option>
+                    </select>
+                    <select id="complejidad" class="entrada-calculadora">
+                        <option value="">Nivel de complejidad</option>
+                        <option value="0.8">Básico (-20%)</option>
+                        <option value="1">Intermedio (precio base)</option>
+                        <option value="1.3">Avanzado (+30%)</option>
+                        <option value="1.5">Experto (+50%)</option>
+                    </select>
+                    <button class="boton boton-primario" onclick="calcularTarifa()">Calcular Precio</button>
+                    <div id="resultado" class="resultado-calculadora"></div>
                 </div>
             </div>
         </section>
