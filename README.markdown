@@ -26,7 +26,7 @@ UniLancers es una plataforma web diseñada para conectar estudiantes universitar
 ## Despliegue
 El proyecto está desplegado en Vercel. Puedes acceder a la versión en producción aquí:
 
-**[]**
+**[https://unilancers.vercel.app]**
 
 ## Estructura del Proyecto
 ```
