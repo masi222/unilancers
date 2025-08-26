@@ -42,53 +42,59 @@
             <div class="contenedor">
                 <h2 class="titulo-seccion">Servicios Disponibles</h2>
                 <div class="cuadricula-servicios">
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="desarrollo-web">
                         <div class="icono-servicio">💻</div>
                         <h3 class="titulo-servicio">Desarrollo Web</h3>
                         <p class="descripcion-servicio">
                             Sitios web responsive, aplicaciones web modernas y soluciones frontend/backend 
                             desarrolladas por estudiantes de ingeniería.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('desarrollo-web')">Ver más</button>
                     </div>
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="diseno-grafico">
                         <div class="icono-servicio">🎨</div>
                         <h3 class="titulo-servicio">Diseño Gráfico</h3>
                         <p class="descripcion-servicio">
                             Logos, identidad visual, diseño de interfaces y material publicitario 
                             creado por estudiantes de diseño y artes visuales.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('diseno-grafico')">Ver más</button>
                     </div>
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="tutorias-academicas">
                         <div class="icono-servicio">📚</div>
                         <h3 class="titulo-servicio">Tutorías Académicas</h3>
                         <p class="descripcion-servicio">
                             Clases particulares en matemáticas, programación, idiomas y materias específicas 
                             impartidas por estudiantes destacados.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('tutorias-academicas')">Ver más</button>
                     </div>
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="apps-moviles">
                         <div class="icono-servicio">📱</div>
                         <h3 class="titulo-servicio">Apps Móviles</h3>
                         <p class="descripcion-servicio">
                             Desarrollo de aplicaciones móviles para Android e iOS, 
                             desde prototipos hasta apps completamente funcionales.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('apps-moviles')">Ver más</button>
                     </div>
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="redaccion-contenido">
                         <div class="icono-servicio">✍️</div>
                         <h3 class="titulo-servicio">Redacción y Contenido</h3>
                         <p class="descripcion-servicio">
                             Artículos, copywriting, corrección de textos y creación de contenido 
                             por estudiantes de comunicación y literatura.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('redaccion-contenido')">Ver más</button>
                     </div>
-                    <div class="tarjeta-servicio">
+                    <div class="tarjeta-servicio" data-servicio-id="analisis-datos">
                         <div class="icono-servicio">📊</div>
                         <h3 class="titulo-servicio">Análisis de Datos</h3>
                         <p class="descripcion-servicio">
                             Visualización de datos, análisis estadístico y reportes 
                             realizados por estudiantes de estadística y ciencias de datos.
                         </p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalServicio('analisis-datos')">Ver más</button>
                     </div>
                 </div>
             </div>
@@ -97,8 +103,9 @@
         <section id="freelancers" class="freelancers">
             <div class="contenedor">
                 <h2 class="titulo-seccion">Freelancers Destacados</h2>
+                <input type="text" id="busqueda-freelancers" class="entrada-busqueda" placeholder="Buscar freelancers por nombre o habilidad">
                 <div class="cuadricula-freelancers">
-                    <div class="tarjeta-freelancer">
+                    <div class="tarjeta-freelancer" data-freelancer-id="ana-jimenez">
                         <div class="avatar-freelancer">AJ</div>
                         <h3 class="nombre-freelancer">Ana Jiménez</h3>
                         <p class="habilidad-freelancer">Desarrolladora Frontend</p>
@@ -110,8 +117,9 @@
                             <span class="estrella">★</span>
                         </div>
                         <p class="precio-freelancer">$15/hora</p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalFreelancer('ana-jimenez')">Ver más</button>
                     </div>
-                    <div class="tarjeta-freelancer">
+                    <div class="tarjeta-freelancer" data-freelancer-id="carlos-martinez">
                         <div class="avatar-freelancer">CM</div>
                         <h3 class="nombre-freelancer">Carlos Martínez</h3>
                         <p class="habilidad-freelancer">Diseñador UX/UI</p>
@@ -123,8 +131,9 @@
                             <span class="estrella">★</span>
                         </div>
                         <p class="precio-freelancer">$12/hora</p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalFreelancer('carlos-martinez')">Ver más</button>
                     </div>
-                    <div class="tarjeta-freelancer">
+                    <div class="tarjeta-freelancer" data-freelancer-id="lucia-ramirez">
                         <div class="avatar-freelancer">LR</div>
                         <h3 class="nombre-freelancer">Lucía Ramírez</h3>
                         <p class="habilidad-freelancer">Tutora de Matemáticas</p>
@@ -136,8 +145,9 @@
                             <span class="estrella">★</span>
                         </div>
                         <p class="precio-freelancer">$10/hora</p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalFreelancer('lucia-ramirez')">Ver más</button>
                     </div>
-                    <div class="tarjeta-freelancer">
+                    <div class="tarjeta-freelancer" data-freelancer-id="diego-garcia">
                         <div class="avatar-freelancer">DG</div>
                         <h3 class="nombre-freelancer">Diego García</h3>
                         <p class="habilidad-freelancer">Desarrollador Mobile</p>
@@ -149,6 +159,7 @@
                             <span class="estrella">☆</span>
                         </div>
                         <p class="precio-freelancer">$18/hora</p>
+                        <button class="boton boton-secundario ver-mas" onclick="abrirModalFreelancer('diego-garcia')">Ver más</button>
                     </div>
                 </div>
             </div>
@@ -187,7 +198,7 @@
                 <h2 class="titulo-seccion">Nuestro Equipo Creador</h2>
                 <div class="cuadricula-equipo">
                     <div class="miembro-equipo">
-                        <div class="avatar-equipo">👤</div>
+                        <div class="avatar-equipo">BM</div>
                         <h3 class="nombre-equipo">Bierlin Massiel Moranci Nelson</h3>
                         <p class="matricula-equipo">Matrícula: 23-EISN-2-007</p>
                         <div class="proyectos-equipo">
@@ -196,7 +207,7 @@
                         </div>
                     </div>
                     <div class="miembro-equipo">
-                        <div class="avatar-equipo">👤</div>
+                        <div class="avatar-equipo">AD</div>
                         <h3 class="nombre-equipo">Angel Daniel Mota Polanco</h3>
                         <p class="matricula-equipo">Matrícula: 21-EISN-2-017</p>
                         <div class="proyectos-equipo">
@@ -205,7 +216,7 @@
                         </div>
                     </div>
                     <div class="miembro-equipo">
-                        <div class="avatar-equipo">👤</div>
+                        <div class="avatar-equipo">RG</div>
                         <h3 class="nombre-equipo">Roberfry Guerrero Ramirez</h3>
                         <p class="matricula-equipo">Matrícula: 23-EISN-2-015</p>
                         <div class="proyectos-equipo">
@@ -214,7 +225,7 @@
                         </div>
                     </div>
                     <div class="miembro-equipo">
-                        <div class="avatar-equipo">👤</div>
+                        <div class="avatar-equipo">OP</div>
                         <h3 class="nombre-equipo">Omaiker Perez Castro</h3>
                         <p class="matricula-equipo">Matrícula: 20-SISN-2-014</p>
                         <div class="proyectos-equipo">
@@ -223,7 +234,7 @@
                         </div>
                     </div>
                     <div class="miembro-equipo">
-                        <div class="avatar-equipo">👤</div>
+                        <div class="avatar-equipo">RG</div>
                         <h3 class="nombre-equipo">Reyna Garrido</h3>
                         <p class="matricula-equipo">Matrícula: 16-MISN-2-030</p>
                         <div class="proyectos-equipo">
@@ -247,6 +258,40 @@
             <p>&copy; 2025 UniLancers. Conectando talento estudiantil con oportunidades reales.</p>
         </div>
     </footer>
+
+    <!-- Modal de Contacto -->
+    <div id="modal-contacto" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h2>Contáctanos</h2>
+            <div class="contenedor-formulario">
+                <input type="text" id="nombre-contacto" placeholder="Nombre completo" class="entrada-modal">
+                <input type="email" id="email-contacto" placeholder="Correo electrónico" class="entrada-modal">
+                <textarea id="mensaje-contacto" placeholder="Tu mensaje" class="entrada-modal"></textarea>
+                <button class="boton boton-primario" onclick="enviarMensaje()">Enviar Mensaje</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Servicios -->
+    <div id="modal-servicio" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-modal" onclick="cerrarModalServicio()">&times;</span>
+            <h2 id="titulo-servicio"></h2>
+            <p id="detalle-servicio"></p>
+            <button class="boton boton-primario" onclick="cerrarModalServicio()">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Freelancers -->
+    <div id="modal-freelancer" class="modal">
+        <div class="contenido-modal">
+            <span class="cerrar-modal" onclick="cerrarModalFreelancer()">&times;</span>
+            <h2 id="nombre-freelancer"></h2>
+            <p id="detalle-freelancer"></p>
+            <button class="boton boton-primario" onclick="cerrarModalFreelancer()">Cerrar</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

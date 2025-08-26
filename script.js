@@ -44,24 +44,6 @@ function calcularTarifa() {
     `;
 }
 
-// Alternancia del menú móvil
-const botonMenuMovil = document.querySelector('.boton-menu-movil');
-const menuNavegacion = document.querySelector('.menu-navegacion');
-
-botonMenuMovil.addEventListener('click', () => {
-    menuNavegacion.style.display = menuNavegacion.style.display === 'flex' ? 'none' : 'flex';
-});
-
-// Fondo del encabezado al hacer scroll
-window.addEventListener('scroll', () => {
-    const encabezado = document.querySelector('header');
-    if (window.scrollY > 100) {
-        encabezado.style.background = 'rgba(15, 15, 35, 0.95)';
-    } else {
-        encabezado.style.background = 'rgba(15, 15, 35, 0.8)';
-    }
-});
-
 // Intersection Observer para animaciones
 const opcionesObservador = {
     threshold: 0.1,
@@ -77,121 +59,13 @@ const observador = new IntersectionObserver((entradas) => {
     });
 }, opcionesObservador);
 
-// Observar todas las tarjetas de servicios y freelancers
+// Observar todas las tarjetas de servicios, freelancers y equipo
 document.querySelectorAll('.tarjeta-servicio, .tarjeta-freelancer, .miembro-equipo').forEach(tarjeta => {
     tarjeta.style.opacity = '0';
     tarjeta.style.transform = 'translateY(30px)';
     tarjeta.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observador.observe(tarjeta);
 });
-
-// Sistema de calificación para freelancers (interactivo)
-document.querySelectorAll('.tarjeta-freelancer').forEach(tarjeta => {
-    const estrellas = tarjeta.querySelectorAll('.estrella');
-    estrellas.forEach((estrella, indice) => {
-        estrella.addEventListener('mouseenter', () => {
-            estrellas.forEach((e, i) => {
-                e.style.color = i <= indice ? '#fbbf24' : '#374151';
-            });
-        });
-        
-        estrella.addEventListener('mouseleave', () => {
-            estrellas.forEach(e => {
-                e.style.color = e.textContent === '★' ? '#fbbf24' : '#374151';
-            });
-        });
-    });
-});
-
-// Efecto de escritura dinámica para el título principal
-function maquinaDeEscribir(elemento, texto, velocidad = 100) {
-    let i = 0;
-    elemento.innerHTML = '';
-    
-    function escribir() {
-        if (i < texto.length) {
-            elemento.innerHTML += texto.charAt(i);
-            i++;
-            setTimeout(escribir, velocidad);
-        }
-    }
-    escribir();
-}
-
-// Inicializar efecto de escritura cuando la página se carga
-window.addEventListener('load', () => {
-    const tituloPrincipal = document.querySelector('.titulo-principal');
-    const textoOriginal = tituloPrincipal.textContent;
-    maquinaDeEscribir(tituloPrincipal, textoOriginal, 80);
-});
-
-// Validación de formulario para calculadora
-document.querySelectorAll('.entrada-calculadora').forEach(entrada => {
-    entrada.addEventListener('input', (evento) => {
-        const valor = evento.target.value;
-        if (evento.target.type === 'number' && valor < 0) {
-            evento.target.value = 0;
-        }
-    });
-});
-
-// Agregar efecto de partículas flotantes
-function crearParticulasFlotantes() {
-    const contenedorParticulas = document.createElement('div');
-    contenedorParticulas.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-    `;
-    document.body.appendChild(contenedorParticulas);
-
-    for (let i = 0; i < 50; i++) {
-        const particula = document.createElement('div');
-        particula.style.cssText = `
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: linear-gradient(45deg, #6366f1, #ec4899);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: particula-flotante ${Math.random() * 20 + 10}s linear infinite;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-        `;
-        contenedorParticulas.appendChild(particula);
-    }
-}
-
-// Agregar CSS para animación de partículas
-const estiloParticulas = document.createElement('style');
-estiloParticulas.textContent = `
-    @keyframes particula-flotante {
-        0% {
-            opacity: 0;
-            transform: translateY(100vh) scale(0);
-        }
-        10% {
-            opacity: 0.3;
-            transform: translateY(90vh) scale(1);
-        }
-        90% {
-            opacity: 0.3;
-            transform: translateY(-10vh) scale(1);
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(-20vh) scale(0);
-        }
-    }
-`;
-document.head.appendChild(estiloParticulas);
-
-// Inicializar partículas
-crearParticulasFlotantes();
 
 // Efectos hover para tarjetas de servicios
 document.querySelectorAll('.tarjeta-servicio').forEach(tarjeta => {
@@ -211,110 +85,174 @@ document.querySelectorAll('.tarjeta-servicio').forEach(tarjeta => {
     });
 });
 
-// Agregar funcionalidad de búsqueda
+// Modal de Contacto
+function abrirModal() {
+    document.getElementById('modal-contacto').style.display = 'flex';
+}
+
+function cerrarModal() {
+    document.getElementById('modal-contacto').style.display = 'none';
+}
+
+function enviarMensaje() {
+    const nombre = document.getElementById('nombre-contacto').value;
+    const email = document.getElementById('email-contacto').value;
+    const mensaje = document.getElementById('mensaje-contacto').value;
+
+    if (!nombre || !email || !mensaje) {
+        alert('Por favor, completa todos los campos del formulario');
+        return;
+    }
+
+    alert('Mensaje enviado con éxito');
+    cerrarModal();
+}
+
+// Modal de Servicios
+const datosServicios = {
+    'desarrollo-web': {
+        titulo: 'Desarrollo Web',
+        detalle: 'Ofrecemos soluciones completas para sitios web y aplicaciones modernas, incluyendo desarrollo frontend con HTML, CSS y JavaScript, y backend con Node.js o Python. Proyectos personalizados, optimizados para SEO y adaptados a dispositivos móviles.'
+    },
+    'diseno-grafico': {
+        titulo: 'Diseño Gráfico',
+        detalle: 'Creamos identidades visuales únicas, desde logos y branding hasta interfaces de usuario y materiales promocionales. Trabajamos con herramientas como Adobe Photoshop, Illustrator y Figma para garantizar diseños modernos y atractivos.'
+    },
+    'tutorias-academicas': {
+        titulo: 'Tutorías Académicas',
+        detalle: 'Sesiones personalizadas en matemáticas, programación (Python, Java, C++), idiomas (inglés, español) y otras materias. Nuestros tutores son estudiantes destacados con experiencia en enseñanza y metodologías adaptadas a tus necesidades.'
+    },
+    'apps-moviles': {
+        titulo: 'Apps Móviles',
+        detalle: 'Desarrollamos aplicaciones móviles para Android e iOS usando frameworks como React Native y Flutter. Desde prototipos hasta aplicaciones completas, ofrecemos soluciones funcionales y optimizadas para tus ideas.'
+    },
+    'redaccion-contenido': {
+        titulo: 'Redacción y Contenido',
+        detalle: 'Producimos contenido de alta calidad, incluyendo artículos, copywriting para marketing, corrección de textos y guiones. Ideal para blogs, sitios web y campañas publicitarias, con un enfoque en claridad y creatividad.'
+    },
+    'analisis-datos': {
+        titulo: 'Análisis de Datos',
+        detalle: 'Realizamos análisis estadísticos, visualización de datos y reportes detallados usando herramientas como Python, R y Tableau. Perfecto para negocios que buscan insights valiosos a partir de sus datos.'
+    }
+};
+
+function abrirModalServicio(id) {
+    const servicio = datosServicios[id];
+    if (servicio) {
+        document.getElementById('titulo-servicio').textContent = servicio.titulo;
+        document.getElementById('detalle-servicio').textContent = servicio.detalle;
+        document.getElementById('modal-servicio').style.display = 'flex';
+    }
+}
+
+function cerrarModalServicio() {
+    document.getElementById('modal-servicio').style.display = 'none';
+}
+
+// Modal de Freelancers
+const datosFreelancers = {
+    'ana-jimenez': {
+        nombre: 'Ana Jiménez',
+        detalle: 'Desarrolladora Frontend con 3 años de experiencia en React y Vue.js. Especializada en interfaces responsivas y optimización de rendimiento web. Ha trabajado en proyectos para startups y pequeñas empresas.'
+    },
+    'carlos-martinez': {
+        nombre: 'Carlos Martínez',
+        detalle: 'Diseñador UX/UI con experiencia en Figma y Adobe XD. Crea interfaces intuitivas y atractivas, enfocándose en la experiencia del usuario. Ha diseñado aplicaciones móviles y sitios web para diversos clientes.'
+    },
+    'lucia-ramirez': {
+        nombre: 'Lucía Ramírez',
+        detalle: 'Tutora de matemáticas con experiencia en álgebra, cálculo y estadística. Ofrece sesiones personalizadas para estudiantes de secundaria y universidad, con un enfoque práctico y dinámico.'
+    },
+    'diego-garcia': {
+        nombre: 'Diego García',
+        detalle: 'Desarrollador Mobile especializado en Flutter y React Native. Ha desarrollado aplicaciones para Android e iOS, incluyendo juegos y herramientas de productividad, con un enfoque en rendimiento y usabilidad.'
+    }
+};
+
+function abrirModalFreelancer(id) {
+    const freelancer = datosFreelancers[id];
+    if (freelancer) {
+        document.getElementById('nombre-freelancer').textContent = freelancer.nombre;
+        document.getElementById('detalle-freelancer').textContent = freelancer.detalle;
+        document.getElementById('modal-freelancer').style.display = 'flex';
+    }
+}
+
+function cerrarModalFreelancer() {
+    document.getElementById('modal-freelancer').style.display = 'none';
+}
+
+// Búsqueda de freelancers
 function agregarFuncionBusqueda() {
-    const contenedorBusqueda = document.createElement('div');
-    contenedorBusqueda.style.cssText = `
-        text-align: center;
-        margin: 2rem 0;
-    `;
-    
-    const entradaBusqueda = document.createElement('input');
-    entradaBusqueda.type = 'text';
-    entradaBusqueda.placeholder = 'Buscar freelancers por habilidad...';
-    entradaBusqueda.className = 'entrada-calculadora';
-    entradaBusqueda.style.maxWidth = '400px';
-    
-    contenedorBusqueda.appendChild(entradaBusqueda);
-    
-    const seccionFreelancers = document.getElementById('freelancers');
-    const cuadriculaFreelancers = seccionFreelancers.querySelector('.cuadricula-freelancers');
-    
-    seccionFreelancers.insertBefore(contenedorBusqueda, cuadriculaFreelancers);
-    
-    entradaBusqueda.addEventListener('input', (evento) => {
-        const terminoBusqueda = evento.target.value.toLowerCase();
-        const tarjetasFreelancer = document.querySelectorAll('.tarjeta-freelancer');
-        
-        tarjetasFreelancer.forEach(tarjeta => {
-            const habilidad = tarjeta.querySelector('.habilidad-freelancer').textContent.toLowerCase();
+    const entradaBusqueda = document.getElementById('busqueda-freelancers');
+    entradaBusqueda.addEventListener('input', () => {
+        const termino = entradaBusqueda.value.toLowerCase();
+        document.querySelectorAll('.tarjeta-freelancer').forEach(tarjeta => {
             const nombre = tarjeta.querySelector('.nombre-freelancer').textContent.toLowerCase();
-            
-            if (habilidad.includes(terminoBusqueda) || nombre.includes(terminoBusqueda)) {
-                tarjeta.style.display = 'block';
-                tarjeta.style.animation = 'aparecerGradual 0.5s ease';
-            } else {
-                tarjeta.style.display = terminoBusqueda === '' ? 'block' : 'none';
-            }
+            const habilidad = tarjeta.querySelector('.habilidad-freelancer').textContent.toLowerCase();
+            tarjeta.style.display = (nombre.includes(termino) || habilidad.includes(termino)) ? 'block' : 'none';
         });
     });
 }
 
-// Inicializar función de búsqueda
-agregarFuncionBusqueda();
-
-// Agregar animación aparecerGradual
-const estiloAparecerGradual = document.createElement('style');
-estiloAparecerGradual.textContent = `
-    @keyframes aparecerGradual {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
+// Partículas flotantes
+function crearParticulasFlotantes() {
+    const contenedor = document.querySelector('.animacion-fondo');
+    const particulas = 30;
+    for (let i = 0; i < particulas; i++) {
+        const particula = document.createElement('div');
+        particula.classList.add('particula-flotante');
+        particula.style.left = `${Math.random() * 100}vw`;
+        particula.style.animationDelay = `${Math.random() * 10}s`;
+        particula.style.animationDuration = `${Math.random() * 10 + 5}s`;
+        contenedor.appendChild(particula);
     }
-`;
-document.head.appendChild(estiloAparecerGradual);
-
-// Funcionalidad de modal de contacto
-function agregarModalContacto() {
-    const htmlModal = `
-        <div id="modalContacto" style="
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        ">
-            <div style="
-                background: var(--tarjeta-oscura);
-                border-radius: 20px;
-                padding: 2rem;
-                max-width: 500px;
-                width: 90%;
-                border: 1px solid var(--borde-cristal);
-            ">
-                <h3 style="margin-bottom: 1rem; color: var(--texto-claro);">Contáctanos</h3>
-                <input type="text" placeholder="Tu nombre" class="entrada-calculadora">
-                <input type="email" placeholder="Tu email" class="entrada-calculadora">
-                <textarea placeholder="Tu mensaje" class="entrada-calculadora" rows="4"></textarea>
-                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <button class="boton boton-primario" onclick="enviarMensaje()">Enviar</button>
-                    <button class="boton boton-secundario" onclick="cerrarModal()">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', htmlModal);
 }
 
-// Funciones del modal
-window.abrirModal = () => {
-    document.getElementById('modalContacto').style.display = 'flex';
-};
+// Efecto de escritura
+function maquinaDeEscribir() {
+    const frases = [
+        'Conecta con el Mejor Talento Estudiantil',
+        'Proyectos de Calidad a Precios Estudiantiles',
+        'Encuentra tu Freelancer Ideal'
+    ];
+    let indiceFrase = 0;
+    let indiceLetra = 0;
+    let textoActual = '';
+    const elemento = document.querySelector('.titulo-principal');
+    const velocidadEscritura = 100;
+    const velocidadBorrado = 50;
+    const pausa = 2000;
 
-window.cerrarModal = () => {
-    document.getElementById('modalContacto').style.display = 'none';
-};
+    function escribir() {
+        if (indiceLetra < frases[indiceFrase].length) {
+            textoActual += frases[indiceFrase][indiceLetra];
+            elemento.textContent = textoActual;
+            indiceLetra++;
+            setTimeout(escribir, velocidadEscritura);
+        } else {
+            setTimeout(borrar, pausa);
+        }
+    }
 
-window.enviarMensaje = () => {
-    alert('¡Mensaje enviado! Te contactaremos pronto.');
-    cerrarModal();
-};
+    function borrar() {
+        if (indiceLetra > 0) {
+            textoActual = textoActual.slice(0, -1);
+            elemento.textContent = textoActual;
+            indiceLetra--;
+            setTimeout(borrar, velocidadBorrado);
+        } else {
+            indiceFrase = (indiceFrase + 1) % frases.length;
+            setTimeout(escribir, 500);
+        }
+    }
 
-// Inicializar modal de contacto
-agregarModalContacto();
+    escribir();
+}
 
-console.log('🚀 Plataforma UniLancers cargada exitosamente!');
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    crearParticulasFlotantes();
+    maquinaDeEscribir();
+    agregarFuncionBusqueda();
+});
